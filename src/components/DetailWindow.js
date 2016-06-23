@@ -3,6 +3,7 @@ import React from "react";
 import Dialog from "material-ui/Dialog";
 import {Tabs, Tab} from "material-ui/Tabs";
 import FlatButton from "material-ui/FlatButton";
+import MessageHeaders from "./MessageHeaders";
 
 export default class DetailWindow extends React.Component {
     handleClose() {
@@ -21,30 +22,21 @@ export default class DetailWindow extends React.Component {
 
         return (
             <Dialog
-                modal={true}
+                modal={false}
                 actions={actions}
                 open={this.props.open}
+                autoScrollBodyContent={true}
             >
                 <Tabs>
                     <Tab label="REQUEST">
                         <h2> Headers </h2>
-                        <ul>
-                            <li> blah blah blah </li>
-                            <li> blah blah blah </li>
-                            <li> blah blah blah </li>
-                            <li> blah blah blah </li>
-                        </ul>
+                        <MessageHeaders message={this.props.message.request}/>
                         <h2> Body </h2>
                     </Tab>
                     <Tab label="RESPONSE">
-                        <h1> Headers </h1>
-                        <ul>
-                            <li> blah blah blah </li>
-                            <li> blah blah blah </li>
-                            <li> blah blah blah </li>
-                            <li> blah blah blah </li>
-                        </ul>
-                        <h1> Body </h1>
+                        <h2> Headers </h2>
+                        <MessageHeaders message={this.props.message.response}/>
+                        <h2> Body </h2>
                     </Tab>
                 </Tabs>
             </Dialog>

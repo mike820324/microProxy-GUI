@@ -7,12 +7,12 @@ import DetailWindow from "./DetailWindow";
 
 export default class Main extends React.Component {
     state = {
-        open: false
+        open: false,
+        msg: null
     };
 
     handleOpen(msg) {
-        console.log(msg);
-        this.setState({open: true});
+        this.setState({open: true, msg: msg});
     }
 
     handleClose(){
@@ -21,6 +21,16 @@ export default class Main extends React.Component {
 
     render() {
         const store = this.props.store;
+        let detailWindow;
+        if (this.state.msg !== null) {
+            detailWindow = <DetailWindow
+                                message={this.state.msg}
+                                open={this.state.open}
+                                onClose={this.handleClose.bind(this)}
+                            />;
+        } else {
+            detailWindow = null;
+        }
         return (
             <MuiThemeProvider>
                 <div>
@@ -31,11 +41,7 @@ export default class Main extends React.Component {
                         msgStore={store}
                         onCellClick={this.handleOpen.bind(this)}
                     />
-                    <DetailWindow
-                        message="hello"
-                        open={this.state.open}
-                        onClose={this.handleClose.bind(this)}
-                    />
+                    {detailWindow}
                 </div>
             </MuiThemeProvider>
         );
