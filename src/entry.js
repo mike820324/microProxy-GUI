@@ -1,3 +1,6 @@
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 import {render} from "react-dom";
 import React from "react";
 

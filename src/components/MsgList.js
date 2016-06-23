@@ -3,16 +3,20 @@ import {observer} from "mobx-react";
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from "material-ui/Table";
 import {TableRowColumn} from "material-ui/Table";
 
-import MsgItem from "./MsgItem";
-
 @observer
 class MsgList extends React.Component {
+    handleCellClick(index) {
+        const msg_detail = this.props.msgStore.msg_list[index];
+        this.props.onCellClick(msg_detail);
+    }
+
     render() {
         const {msg_list} = this.props.msgStore;
         return (
             <Table
                 height={"80%"}
                 selectable={true}
+                onCellClick={this.handleCellClick.bind(this)}
             >
                 <TableHeader
                     displaySelectAll={false}
@@ -45,11 +49,12 @@ class MsgList extends React.Component {
                 </TableBody>
             </Table>
         );
-    } 
+    }
 }
 
 MsgList.propTypes = {
-    msgStore: React.PropTypes.object
+    msgStore: React.PropTypes.object.isRequired,
+    onCellClick: React.PropTypes.func.isRequired
 };
 
 export default MsgList;
