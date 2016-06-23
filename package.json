@@ -1,0 +1,28 @@
+{
+  "name": "microproxy-gui",
+  "version": "0.0.1",
+  "description": "MicroProxy GUI written in reactjs with electron.",
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack -p",
+    "start": "electron ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MicroMike",
+  "license": "MIT",
+  "dependencies": {
+    "zmq": "^2.15.3"
+  },
+  "devDependencies": {
+    "mobx": "^2.3.2",
+    "mobx-react": "^3.3.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "babel-cli": "^6.10.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-react": "^6.5.0",
+    "electron-prebuilt": "^1.2.3",
+    "webpack": "^1.13.1"
+  }
+}
